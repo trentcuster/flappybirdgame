@@ -2,6 +2,7 @@ var width,
     height,
     currentState,
     frames = 0,
+    theContainer,
     thehero;
 
 var states = {
@@ -11,6 +12,58 @@ var states = {
 };
 var canvas;
 var renderingContext;
+
+function containerGroup() {
+    this.collection = [];
+    this.reset = function () {
+        this.collection = [];
+    }
+
+    this.add = function () {
+        this.collection.push(new Container());
+    };
+    this.update = function () {
+        if(frames % 100 === 0){
+            this.add();
+        }
+        for(var i = 0, len = this.collection.length; i < len; i ++){
+            var container = this.collection[i];
+
+            if(i === 0){
+                container.detectCollision();
+            }
+
+            container.x -= 2;
+            if(container.x < -container.width){
+                this.collection.splice(i, 1);
+                i--;
+                len --;
+            }
+        }
+    };
+    this.draw = function () {
+        for (var i = 0, len = this.collection.length; i < len; i ++){
+            var container = this.collection[i];
+            container.draw();
+        }
+    }
+}
+
+function Container() {
+    this.x = 400;
+    this.y = 355;
+    this.width = containerSprite.width;
+    this.height = containerSprite.height;
+
+    this.detectCollision = function () {
+        if (this.x <= (thehero.x + thehero.width) && this.x >= thehero.x){
+            console.log("You're Dead");
+        }
+    }
+    this.draw = function () {
+        containerSprite.draw(renderingContext, this.x, this.y);
+    }
+}
 
 function Sully() {
     this.x = -60;
@@ -90,9 +143,11 @@ function main(){
     windowSetup();
     canvasSetup();
     currentState = states.splash;
-    document.body.appendChild(canvas)
+    document.body.appendChild(canvas);
+
     loadGraphics();
     thehero = new Sully();
+    theContainer = new containerGroup();
 }
 
 function windowSetup(){
@@ -137,7 +192,7 @@ function gameLoop() {
 function update() {
     frames ++;
     if(currentState === states.game){
-
+        theContainer.update();
     }
     thehero.update();
 }
@@ -145,5 +200,6 @@ function update() {
 function render() {
     renderingContext.fillRect(0, 0, width, height);
     backgroundSprite.draw(renderingContext, 0, 50);
+    theContainer.draw(renderingContext);
     thehero.draw(renderingContext);
 }
