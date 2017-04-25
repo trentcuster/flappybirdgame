@@ -10,9 +10,9 @@ function Sprite(img, x, y, width, height) {
     this.height = height;
 }
 
-Sprite.prototype.draw = function (rendersingContext, x, y) {
-    rendersingContext.drawImage(this.img, this.x, this.y, this.width, this.height, x, y, this.width, this.height);
-}
+Sprite.prototype.draw = function (renderingContext, x, y) {
+    renderingContext.drawImage(this.img, this.x, this.y, this.width, this.height, x, y, this.width, this.height);
+};
 
 function initSprites(img) {
     sully = [
@@ -20,5 +20,6 @@ function initSprites(img) {
         new Sprite(img, 60, 0, 58, 60),
         new Sprite(img, 120, 0, 65, 59)
     ];
-    backgroundSprite = new Sprite(img, 200, 0, 400, 250);
+    backgroundSprite = new Sprite(img, 200, 0, 400, 430);
 }
+

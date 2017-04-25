@@ -96,11 +96,12 @@ function main(){
 }
 
 function windowSetup(){
+    var inputEvent = "touchstart";
     var windowWidth = $(window).width();
-        width = 320;
-        height = 430;
         if(windowWidth < 500){
-    }
+            width = 320;
+            height = 430;
+        }
     else{
         width = 400;
         height = 430;
@@ -119,10 +120,10 @@ function canvasSetup() {
 
 function loadGraphics() {
     var img = new Image();
-    img.src = "Images/maybe.png";
+    img.src = "Images/nailedit.png";
     img.onload = function () {
         initSprites(this);
-        renderingContext.fillStyle = "#17202A";
+        renderingContext.fillStyle = "#008AC9";
         gameLoop();
     };
 }
@@ -143,6 +144,6 @@ function update() {
 
 function render() {
     renderingContext.fillRect(0, 0, width, height);
-    backgroundSprite.draw(renderingContext, 0, 200);
+    backgroundSprite.draw(renderingContext, 0, 50);
     thehero.draw(renderingContext);
 }
