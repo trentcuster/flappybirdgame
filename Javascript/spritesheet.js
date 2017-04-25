@@ -16,8 +16,9 @@ Sprite.prototype.draw = function (rendersingContext, x, y) {
 
 function initSprites(img) {
     sully = [
-        new Sprite(img, 0, 0, 45, 55),
-        new Sprite(img, 45, 0, 45, 55),
-        new Sprite(img, 90, 0, 45, 55)
+        new Sprite(img, 0, 0, 59, 59),
+        new Sprite(img, 60, 0, 58, 60),
+        new Sprite(img, 120, 0, 65, 59)
     ];
+    backgroundSprite = new Sprite(img, 200, 0, 400, 250);
 }
