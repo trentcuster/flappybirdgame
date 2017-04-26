@@ -51,7 +51,7 @@ function containerGroup() {
 
 function Container() {
     this.x = 400;
-    this.y = 355;
+    this.y = 310;
     this.width = containerSprite.width;
     this.height = containerSprite.height;
 
@@ -175,10 +175,10 @@ function canvasSetup() {
 
 function loadGraphics() {
     var img = new Image();
-    img.src = "Images/nailedit.png";
+    img.src = "Images/sullysprite.png";
     img.onload = function () {
         initSprites(this);
-        renderingContext.fillStyle = "#008AC9";
+        renderingContext.fillStyle = "#1f1f1f";
         gameLoop();
     };
 }
