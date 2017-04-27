@@ -59,7 +59,7 @@ function Container() {
         if (this.x <= (thehero.x + thehero.width) && this.x >= thehero.x){
             console.log("You're Dead");
         }
-    }
+    };
     this.draw = function () {
         containerSprite.draw(renderingContext, this.x, this.y);
     }
@@ -109,7 +109,7 @@ function Sully() {
 
         if(this.y >= 170){
             this.y = 170;
-            this.jumpcount = 2;
+            this.jumpcount = 3;
             this.velocity = this._jump;
         }
     };
